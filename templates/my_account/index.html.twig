@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <title>My account</title>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/my-account/css/style.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="layout_padding2">
+            <div class="my-account-container">
+                <div class="my-account-profile-picture">
+                    <img src="{{ asset('assets/my-account/img/profile.jpg') }}" alt="">
+                </div>
+                <div class="my-account-name mt-4">
+                    <h2>{{ app.user.name }}</h2>
+                </div>
+                <div class="my-account-email">
+                    <h5>{{ app.user.email }}</h5>
+                </div>
+                <div class="my-account-logout mt-4">
+                    <a href="{{ path('app_logout') }}">Log out</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

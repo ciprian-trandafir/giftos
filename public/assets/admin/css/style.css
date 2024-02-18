@@ -1,0 +1,21 @@
+.dashboard .card {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2em;
+}
+
+.dashboard .row .col-md-6 {
+    margin-bottom: 2em;
+}
+
+.dashboard .card .card-content {
+    font-size: 5em;
+    font-weight: 600;
+}
+
+.dashboard .card .card-name {
+    font-size: 2em;
+    font-weight: 500;
+}

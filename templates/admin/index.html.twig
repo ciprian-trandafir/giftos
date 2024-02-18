@@ -1,0 +1,60 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block head_metas %}
+    <title>Admin Dashboard</title>
+{% endblock head_metas %}
+
+{% block head_stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/admin/css/style.css') }}"/>
+{% endblock %}
+
+{% block main %}
+    <section class="dashboard">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-name">
+                        Categories
+                    </div>
+                    <div class="card-content">
+                        {{ categories_count }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-name">
+                        Products
+                    </div>
+                    <div class="card-content">
+                        {{ products_count }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-name">
+                        Users
+                    </div>
+                    <div class="card-content">
+                        {{ users_count }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-name">
+                        Testimonials
+                    </div>
+                    <div class="card-content">
+                        {{ testimonials_count }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock main %}

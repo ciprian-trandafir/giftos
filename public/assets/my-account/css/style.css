@@ -1,0 +1,9 @@
+.my-account-container {
+    margin: 0 45px;
+    text-align: center;
+}
+
+.my-account-profile-picture img {
+    width: 20em;
+    border-radius: 10em;
+}

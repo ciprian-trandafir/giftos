@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <title>Register</title>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/login-register/css/style.css') }}" />
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-5">
+                    <div class="login-wrap p-4 p-md-5">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="fa fa-user-plus"></span>
+                        </div>
+                        <h3 class="text-center mb-4">Sign Up</h3>
+                        {{ form_start(registrationForm) }}
+                            <div class="form-group">
+                                {{ form_widget(registrationForm.name, {'attr': {'class': 'form-control rounded-left"', 'placeholder': 'Name'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control rounded-left"', 'placeholder': 'Email', 'type': 'email'}}) }}
+                                {% if form_errors(registrationForm.email) %}
+                                    <div class="alert alert-danger">{{ form_errors(registrationForm.email) }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control rounded-left"', 'placeholder': 'Password'}}) }}
+                                {% if form_errors(registrationForm.plainPassword) %}
+                                    <div class="alert alert-danger">{{ form_errors(registrationForm.plainPassword) }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <button type="submit"
+                                        class="form-control btn btn-primary rounded submit px-3">Register
+                                </button>
+                            </div>
+                            <div class="form-group d-md-flex">
+                                <div class="w-100 text-center">
+                                    Already have an account?
+                                    <a href="{{ path('app_login') }}">Login</a>
+                                </div>
+                            </div>
+                        {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <title>{{ product.name }}</title>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/product/css/style.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <div class="row max-px">
+                <div class="col-lg mb-30">
+                    <div id="product-carousel" class="carousel slide imageCarousel" data-ride="carousel">
+                        <div class="carousel-inner imageContainer">
+                            <img class="imageWrapper"
+                                    src="{% if product.picture %}{{ asset('img/p/' ~ product.picture) }}{% else %}{{ asset('img/p/default.png') }}{% endif %}"
+                                    alt="{{ product.name }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg mb-30">
+                    <div class="customPadding">
+                        <h3 class="productTitle">{{ product.getName }}</h3>
+                        <h3 class="productPrice pb-4">${{ product.getPrice }}</h3>
+                        <div class="divider"></div>
+                        {% if app.user is defined and app.user is not null %}
+                            <div class="d-flex align-items-center mb-4 pt-4">
+                                <button class="btn btn-primary px-3 btn-add-to-cart" data-id="{{ product.getId }}">
+                                    <i class="fa fa-shopping-cart mr-1"></i>
+                                    Add To Cart
+                                </button>
+                            </div>
+                            <div>
+                                <div class="alert alert-success add-to-cart-success">
+                                    Product successfully added to cart
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="productDescription">
+                            {% if product.getDescriptionShort %}{{ product.getDescriptionShort | raw }}{% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="px-xl-3 w-100 max-px">
+            <div class="col">
+                <div class="nav nav-tabs mb-4">
+                    <a class="nav-item nav-link text-dark active" data-toggle="tab"
+                       href="#tab-pane-1">Description</a>
+                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="tab-pane-1">
+                        <div>
+                            {% if product.getDescription %}{{ product.getDescription | raw }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-pane-2">
+                        <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero
+                            aliquyam invidunt duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor
+                            rebum eirmod consetetur invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd
+                            ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod. Takimata kasd ipsum
+                            accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus
+                            diam tempor aliquyam eirmod nonumy rebum dolor accusam, ipsum kasd eos consetetur at
+                            sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr sanctus eirmod
+                            takimata dolor ea invidunt.</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item px-0">
+                                        Sit erat duo lorem duo ea consetetur, et eirmod takimata.
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        Duo amet accusam eirmod nonumy stet et et stet eirmod.
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item px-0">
+                                        Sit erat duo lorem duo ea consetetur, et eirmod takimata.
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        Duo amet accusam eirmod nonumy stet et et stet eirmod.
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts_footer %}
+    {{ parent() }}
+    <script>
+        var ajax_url = "{{ path('app_cart') }}";
+    </script>
+    <script src="{{ asset('assets/product/js/index.js') }}"></script>
+{% endblock %}

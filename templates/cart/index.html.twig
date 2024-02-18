@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <title>Cart</title>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/cart/css/style.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="row layout_padding2 cart-container">
+            <div class="col-md-8">
+                <div class="bg-light bg-gradient cart-section cart-products">
+                    {% include 'cart/_partials/products.html.twig' with {'products': products} %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-light bg-gradient cart-section cart-totals">
+                    {% include 'cart/_partials/totals.html.twig' with {'products': products} %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts_footer %}
+    {{ parent() }}
+    <script>
+        var ajax_url = "{{ path('app_cart') }}";
+    </script>
+    <script src="{{ asset('assets/cart/js/index.js') }}"></script>
+{% endblock %}

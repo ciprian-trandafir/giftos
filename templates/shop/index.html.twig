@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <title>Shop</title>
+{% endblock %}
+
+{% block body %}
+    <section class="shop_section layout_padding2">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    OUR CATEGORIES
+                </h2>
+            </div>
+            <div class="row">
+                {% for category in categories %}
+                    {% include '_partials/category_block.html.twig' with {'category': category} %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section class="shop_section layout_padding" id="our_products">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Our Products
+                </h2>
+            </div>
+            <div class="row">
+                {% for product in products %}
+                    {% include '_partials/product_block.html.twig' with {'product': product} %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

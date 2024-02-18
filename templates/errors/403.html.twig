@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <title>Access Denied</title>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('assets/errors/css/style.css') }}" />
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+    <div id="notfound">
+        <div class="notfound-bg">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="notfound">
+            <div class="notfound-404">
+                <h1>403</h1>
+            </div>
+            <h2>Access Denied</h2>
+            <p>You don't have authorization to view this page.</p>
+            <a href="{{ path('app_home') }}">Homepage</a>
+            {#<div class="notfound-social">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+            </div>#}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% if not products|length %}
+    <div class="cart-notification alert alert-warning">
+        Nu aveți produse adăugate în coș.
+    </div>
+{% else %}
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-12 product-line-item" data-id="{{ product.product.id }}">
+                <div class="product-line-item-inner row">
+                    <div class="col-2">
+                        <img src="{% if product.product.picture %}{{ asset('img/p/' ~ product.product.picture) }}{% else %}{{ asset('img/p/default.png') }}{% endif %}"
+                             alt="{{ product.product.name }}" class="product-line-image">
+                    </div>
+                    <div class="col-5 align-items-center">
+                        <a href="{{ path('app_product', {'id': product.product.id, 'slug': product.product.slug}) }}"
+                            class="product-line-name">
+                            <h5>{{ product.product.getName }}</h5>
+                        </a>
+                        <span class="product-line-description"
+                                title="{{ product.product.getDescriptionShort | striptags }}">{{ product.product.getDescriptionShort | raw }}</span>
+                    </div>
+                    <div class="row col-5 align-items-center justify-content-between">
+                        <div class="col-6 product-line-qty-wrapper">
+                            <input type="text" data-qty="{{ product.product.getStock }}"
+                                   class="product-line-qty form-control text-center" value="{{ product.qty }}">
+                        </div>
+                        <div class="col-6 row">
+                            <div class="col-8">
+                                ${{ product.total }}
+                            </div>
+                            <div class="col-4">
+                                <i class="fa fa-trash product-line-delete"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
